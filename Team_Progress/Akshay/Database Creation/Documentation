@@ -1,0 +1,23 @@
+Database Ownership Summary,
+
+I completed the database setup work for the customer churn prediction project using PostgreSQL. My contribution focused on preparing the backend data storage system 
+required to store and manage the Telco customer churn dataset. I installed and configured PostgreSQL, created the project database, and designed the required tables 
+for storing customer information. I also imported the Telco dataset into the database and verified that the records were inserted correctly. This ensures that the 
+project data is stored properly and can be used for further analysis, model training, and churn prediction.
+As part of my work, I also checked the database structure and ensured that the customer records were ready for use in the next stages of the project. This database 
+setup forms the foundation for connecting the dataset with Python and performing customer churn analysis.
+
+Key Contributions
+
+* Installed and configured PostgreSQL
+* Created the project database
+* Designed and created customer data tables
+* Imported the Telco customer churn dataset
+* Verified successful data insertion
+* Prepared the database for analysis and prediction tasks
+* Supported backend data storage for the churn prediction system
+
+GitHub Description
+
+This section of the project focuses on database ownership. I was responsible for setting up the PostgreSQL database, creating the required tables, importing the 
+Telco customer churn dataset, and verifying that the data was stored correctly. This work provides the backend storage foundation for customer churn analysis and prediction.
