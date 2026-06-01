@@ -1,9 +1,0 @@
-pandas
-numpy
-psycopg2-binary
-scikit-learn
-matplotlib
-seaborn
-fastapi
-uvicorn
-jupyter
