@@ -1,13 +1,14 @@
-"""
+r"""
 LTV Model — Customer Lifetime Value Calculation.
 Calculates historical + predictive LTV and segments customers by value tier.
-Run from: r"Team_Progress\Rasool\files\
+Run from: Team_Progress\Rasool\files\
 Command:  python models/ltv_model.py
 """
 import pandas as pd
 import numpy as np
 import joblib
 import sys
+import os
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -56,13 +57,23 @@ def segment_by_ltv(df):
 if __name__ == '__main__':
     print("=" * 55)
     print("=== STEP 1: Loading clean data ===")
-    df = pd.read_csv('data/processed/telco_features.csv')
-    print(f"Loaded {len(df)} customers")
+    try:
+        df = pd.read_csv('data/processed/telco_features.csv')
+        print(f"Loaded {len(df)} customers")
+    except FileNotFoundError:
+        print("ERROR: Could not find 'data/processed/telco_features.csv'.")
+        print("Ensure you are running this script from the correct root directory.")
+        sys.exit(1)
 
     print("\n=== STEP 2: Loading production model ===")
-    model        = joblib.load('models/production_model.pkl')
-    feature_cols = joblib.load('models/feature_columns.pkl')
-    print("Model loaded OK")
+    try:
+        model        = joblib.load('models/production_model.pkl')
+        feature_cols = joblib.load('models/feature_columns.pkl')
+        print("Model loaded OK")
+    except FileNotFoundError:
+        print("ERROR: Could not find 'models/production_model.pkl' or 'feature_columns.pkl'.")
+        print("Please ensure you have run your model training script first to generate these files.")
+        sys.exit(1)
 
     print("\n=== STEP 3: Preparing data for scoring ===")
     df_temp = df.copy()
@@ -92,6 +103,8 @@ if __name__ == '__main__':
     print(f"\nThresholds: p33=${p33:.2f} | p67=${p67:.2f}")
 
     print("\n=== STEP 6: Saving outputs ===")
+    # Ensure the directory exists before saving
+    os.makedirs('data/processed', exist_ok=True)
     df_ltv.to_csv('data/processed/telco_ltv.csv', index=False)
     print("Saved: data/processed/telco_ltv.csv")
 

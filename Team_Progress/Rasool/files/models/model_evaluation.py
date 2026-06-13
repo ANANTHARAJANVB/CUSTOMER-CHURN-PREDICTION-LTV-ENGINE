@@ -6,7 +6,7 @@ from sklearn.metrics import (precision_recall_curve,
 import matplotlib.pyplot as plt
 import joblib, sys
 sys.path.insert(0, '.')
-from src.features.preprocessing import preprocess_for_ml
+from features.preprocessing import preprocess_for_ml
 
 df = pd.read_csv('data/processed/telco_features.csv')
 X_train, X_test, y_train, y_test, _, _, _ = preprocess_for_ml(df)
