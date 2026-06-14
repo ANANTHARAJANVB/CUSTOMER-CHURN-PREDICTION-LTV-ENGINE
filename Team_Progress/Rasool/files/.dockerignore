@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+metabase.jar
+.metabase/
+.git/

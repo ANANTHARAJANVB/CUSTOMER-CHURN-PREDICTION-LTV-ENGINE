@@ -5,7 +5,7 @@ import os, sys
 
 # Allows Python to find your src folder from the root directory
 sys.path.insert(0, '.')
-from src.db.connection import get_engine
+from db.connection import get_engine
 
 #  Setup 
 os.makedirs('reports/figures', exist_ok=True)
@@ -18,6 +18,7 @@ df = pd.read_sql('SELECT * FROM customers', con=engine)
 
 # Convert TotalCharges to numeric (has some empty strings)
 df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
+df.dropna(subset=['TotalCharges'], inplace=True)
 print(f'Loaded {len(df):,} rows')
 
 #  Plot 1: Churn Distribution (Pie + Bar) 

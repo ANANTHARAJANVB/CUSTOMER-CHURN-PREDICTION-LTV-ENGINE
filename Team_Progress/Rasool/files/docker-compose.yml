@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    container_name: churn_postgres
+    environment:
+      POSTGRES_DB: churn_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  api:
+    build: .
+    container_name: churn_api
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: churn_db
+      DB_USER: postgres
+      DB_PASSWORD: postgres123
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+    ports:
+      - '8000:8000'
+    depends_on:
+      postgres:
+        condition: service_healthy
+volumes:
+  postgres_data:
