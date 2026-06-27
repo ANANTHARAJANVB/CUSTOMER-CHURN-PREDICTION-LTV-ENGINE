@@ -1,0 +1,9 @@
+Important Note Regarding File Rename History
+
+The GitHub commit history for Day 11 to Day 17 may show recent commits because the corresponding documentation files were renamed to correct an accidental date entry in their filenames. Initially, the files were saved with dates such as 24.06.2026, 25.06.2026, etc., instead of the correct dates 24.05.2026, 25.05.2026, and so on.
+
+As shown in the attached GitHub history, these commits represent filename corrections only and do not indicate that the project work was completed recently. No implementation, code, or report content was modified during these commits; only the document names were updated to reflect the correct dates.
+
+I kindly request that these rename commits for Day 11 to Day 17 not be treated as any discrepancy or inconsistency in the evaluation or marking process. They are purely administrative corrections made to maintain accurate project documentation.
+
+Thank you for your understanding and consideration.
